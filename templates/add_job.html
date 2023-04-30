@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+        <h2> {{ message }}</h2>
+        <h2 align="center">Adding Job</h2>
+        <form action="" method="post">
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.job.label }}
+                <div class="col-sm-10">
+                    {{ form.job(class="form-control") }}<br>
+                </div>
+                {% for error in form.job.errors %}
+                    <p class="alert alert-danger" role="alert">
+                            {{ error }}
+                    </p>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.team_leader.label }}
+                <div class="col-sm-10">
+                    {{ form.team_leader(class="form-control") }}<br>
+                </div>
+                {% for error in form.team_leader.errors %}
+                    <p class="alert alert-danger" role="alert">
+                            {{ error }}
+                    </p>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.work_size.label }}
+                <div class="col-sm-10">
+                    {{ form.work_size(class="form-control") }}<br>
+                </div>
+                {% for error in form.work_size.errors %}
+                    <p class="alert alert-danger" role="alert">
+                            {{ error }}
+                    </p>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.collaborators.label }}
+                <div class="col-sm-10">
+                    {{ form.collaborators(class="form-control") }}<br>
+                </div>
+                {% for error in form.collaborators.errors %}
+                    <p class="alert alert-danger" role="alert">
+                            {{ error }}
+                    </p>
+                {% endfor %}
+            </p>
+            <p>{{ form.is_finished() }} {{ form.is_finished.label }}</p>
+            <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        </form>
+    {% endblock %}
+</body>
+</html>

@@ -1,2 +1,0 @@
-milky_way.db
-Perseus
